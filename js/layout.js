@@ -1,5 +1,5 @@
 var myModal = $('#myModal');
-closMyModal = function(){
+closeMyModal = function(){
     myModal.css({
         'opacity' : '0'
     });
@@ -33,12 +33,12 @@ openMyModal = function(){
 $(document).ready(function(){
 
     $('#clickme').stop().click(openMyModal);
-    $('#exit').stop().click(closMyModal);
+    $('#exit').stop().click(closeMyModal);
 
     $(document).keyup(function(e){
 
         if(e.keyCode==27 && myModal.hasClass("open")){
-            closMyModal();
+            closeMyModal();
         } else if(e.keyCode ==13 && myModal.hasClass("closed")) {
             openMyModal();
         }
