@@ -1,34 +1,46 @@
+var myModal = $('#myModal');
 closMyModal = function(){
-    $('#myModal').css({
+    myModal.css({
         'opacity' : '0'
     });
     $('#cover').css({
         'visibility' : 'hidden'
     });
     $('#myform').fadeIn();
+
+    myModal.removeClass();
+    myModal.addClass("closed");
+}
+
+openMyModal = function(){
+        var value = $(document).find(".text").val();
+        myModal.css({
+            'opacity' : '1',
+            'visibility' : 'visible'
+        });
+        $('#cover').css({
+            'visibility' : 'visible'
+        });
+        $('#myform').fadeOut();
+
+        $('#editable').text(value);
+
+        myModal.removeClass();
+        myModal.addClass("open");
 }
 
 
 $(document).ready(function(){
 
-	$('#clickme').stop().click(function(){
-		var value = $(this).parent().find(".text").val();
-		$('#myModal').css({
-			'opacity' : '1',
-			'visibility' : 'visible'
-		});
-		$('#cover').css({
-			'visibility' : 'visible'
-		});
-		$('#myform').fadeOut();
-
-		$('#editable').text(value);
-	});
+	$('#clickme').stop().click(openMyModal);
 	$('#exit').stop().click(closMyModal);
 
    $(document).keyup(function(e){
-        if(e.keyCode==27){
+
+        if(e.keyCode==27 && myModal.hasClass("open")){
             closMyModal();
+        } else if(e.keyCode ==13 && myModal.hasClass("closed")) {
+            openMyModal();
         }
    });
 });
