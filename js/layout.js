@@ -1,4 +1,4 @@
-closMyModal = function(){
+closeMyModal = function(){
     $('#myModal').css({
         'opacity' : '0'
     });
@@ -24,11 +24,11 @@ $(document).ready(function(){
 
 		$('#editable').text(value);
 	});
-	$('#exit').stop().click(closMyModal);
+	$('#exit').stop().click(closeMyModal);
 
    $(document).keyup(function(e){
         if(e.keyCode==27){
-            closMyModal();
+            closeMyModal();
         }
    });
 });
